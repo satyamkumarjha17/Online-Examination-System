@@ -1,0 +1,21 @@
+ONLINE EXAMINATION SYSTEM - WEB EDITION
+
+RUN ON WINDOWS
+1. Install JDK 21 or later.
+2. Extract this ZIP file.
+3. Open the Online-Examination-Web folder in VS Code.
+4. Open Terminal > New Terminal.
+5. Run: .\run.bat
+6. Open: http://localhost:8080
+7. Stop the server with Ctrl+C in the terminal.
+
+ADMINISTRATOR
+Click Administrator in the top navigation.
+Local PIN: admin123
+Change this before deployment by setting the ADMIN_PIN environment variable.
+
+DEPLOYMENT
+Read README.md, especially the Render deployment section.
+
+IMPORTANT
+This is a web application, not the old Swing desktop app. Keep your original desktop project unchanged.

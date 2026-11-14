@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Online Examination Web Server",
+      "request": "launch",
+      "mainClass": "com.exam.web.ExamWebApplication",
+      "vmArgs": "--add-modules=jdk.httpserver",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PORT": "8080"
+      }
+    }
+  ]
+}

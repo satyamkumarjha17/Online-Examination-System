@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b46"><meta name="description" content="A focused computer-based examination platform for practice assessments.">
+  <title>ExamSpace | Online Examination</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ExamSpace home"><span class="brand-mark">E</span><span>examspace<span class="brand-dot">.</span></span></a>
+      <div class="topbar-right"><span class="secure-label"><span class="secure-dot"></span> Assessment portal</span><button class="text-button" id="admin-open" type="button">Administrator</button></div>
+    </header>
+
+    <main>
+      <section id="welcome-view" class="welcome-layout view active">
+        <div class="welcome-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> COMPUTER-BASED ASSESSMENT</div>
+          <h1>Focus on the<br><span>question.</span></h1>
+          <p class="hero-lede">A structured assessment experience with clear instructions, focused navigation and immediate performance feedback.</p>
+          <div class="feature-list">
+            <div class="feature-item"><span class="feature-icon">01</span><div><strong>Fair question selection</strong><small>15 questions selected at random for every attempt.</small></div></div>
+            <div class="feature-item"><span class="feature-icon">02</span><div><strong>Time-aware assessment</strong><small>A 15-minute timer with automatic submission.</small></div></div>
+            <div class="feature-item"><span class="feature-icon">03</span><div><strong>Immediate feedback</strong><small>Review every response after submitting.</small></div></div>
+          </div>
+          <div class="welcome-foot"><span class="university-mark">CU</span><span>Chandigarh University<br><small>Online Examination System</small></span></div>
+        </div>
+        <div class="login-wrap">
+          <div class="login-card">
+            <div class="card-kicker">STUDENT ACCESS</div>
+            <h2>Start your assessment</h2><p class="card-subtitle">Enter your details to continue.</p>
+            <form id="login-form" autocomplete="on">
+              <label for="student-name">Full name</label><input id="student-name" name="name" maxlength="60" placeholder="Enter your full name" required autocomplete="name">
+              <label for="roll-number">University roll number</label><input id="roll-number" name="rollNumber" maxlength="30" placeholder="Enter your roll number" required autocomplete="off">
+              <label for="subject">Select subject</label><div class="select-wrap"><select id="subject" name="subject" required><option>Java</option><option>Aptitude</option><option>General Knowledge</option></select><span class="select-chevron">⌄</span></div>
+              <div class="exam-meta"><span><b id="question-count">15</b> questions</span><i></i><span><b>15</b> minutes</span><i></i><span>No negative marking</span></div>
+              <button class="primary-button full-button" type="submit" id="start-button">Continue to instructions <span>→</span></button>
+              <p class="form-note">By continuing, you confirm that the details above are correct.</p>
+              <p class="form-error" id="login-error" role="alert"></p>
+            </form>
+          </div>
+          <div class="login-caption"><span class="caption-lock">▣</span> Your assessment progress is maintained during this session.</div>
+        </div>
+      </section>
+
+      <section id="instructions-view" class="view narrow-view">
+        <button class="back-link" id="back-login" type="button">← Back to student details</button>
+        <div class="section-heading"><div class="eyebrow">BEFORE YOU BEGIN</div><h1>Read the instructions.</h1><p>Your assessment will open in a separate browser tab. Keep this portal tab available.</p></div>
+        <div class="instruction-card">
+          <div class="instruction-summary"><div><span class="summary-label">SUBJECT</span><strong id="instruction-subject">Java</strong></div><div><span class="summary-label">DURATION</span><strong>15 minutes</strong></div><div><span class="summary-label">QUESTIONS</span><strong>15 MCQs</strong></div></div>
+          <ol class="rules-list"><li><span>01</span><div><strong>One mark per correct answer</strong><p>There is no negative marking. Unanswered questions receive zero marks.</p></div></li><li><span>02</span><div><strong>Manage your time</strong><p>The timer starts when the assessment begins. The exam submits automatically when time expires.</p></div></li><li><span>03</span><div><strong>Use the question navigator</strong><p>Move between questions freely. Mark questions for review and return to them before submitting.</p></div></li><li><span>04</span><div><strong>Submit when finished</strong><p>You can submit early. Your score and answer review appear immediately after submission.</p></div></li></ol>
+          <label class="confirm-row"><input type="checkbox" id="confirm-rules"><span>I have read and understood the examination instructions.</span></label>
+          <button class="primary-button full-button" id="begin-exam" type="button" disabled>Begin examination <span>→</span></button>
+          <p class="form-error" id="instruction-error" role="alert"></p>
+        </div>
+      </section>
+
+      <section id="exam-view" class="view exam-view">
+        <div class="exam-header"><div class="exam-heading-main"><div class="eyebrow">LIVE ASSESSMENT</div><h1 id="exam-subject-title">Java examination</h1><div class="candidate-identity" aria-label="Candidate details"><span><small>CANDIDATE</small><strong id="candidate-name">Candidate name</strong></span><span><small>ROLL NUMBER</small><strong id="candidate-roll">Roll number</strong></span></div></div><div class="timer-card" id="timer-card"><span class="timer-label">TIME REMAINING</span><strong id="timer">15:00</strong><small id="timer-status">Your time starts now</small></div></div>
+        <div class="exam-progress"><div><span id="progress-label">Question 1 of 15</span><span id="answered-label">0 answered</span></div><div class="progress-track"><span id="progress-fill"></span></div></div>
+        <div class="exam-grid"><section class="question-card"><div class="question-top"><span class="question-number" id="question-number">QUESTION 01</span><span class="question-mark">1 MARK</span></div><h2 id="question-text">Loading question…</h2><div id="options-list" class="options-list"></div><div class="exam-nav"><button class="secondary-button" id="previous-question" type="button">← Previous</button><button class="quiet-button" id="clear-answer" type="button">Clear response</button><button class="review-button" id="mark-review" type="button">☆ Mark for review</button><button class="primary-button" id="next-question" type="button">Save &amp; next <span>→</span></button></div></section>
+          <aside class="navigator-card"><div class="navigator-heading"><div><h3>Question navigator</h3><p>Choose a question to visit.</p></div><span class="navigator-count" id="navigator-count">01/15</span></div><div id="question-palette" class="question-palette"></div><div class="legend" aria-label="Question status legend"><div><span class="legend-dot answered"></span>Answered</div><div><span class="legend-dot current"></span>Current</div><div><span class="legend-dot seen"></span>Seen, unanswered</div><div><span class="legend-dot review"></span>Review</div><div><span class="legend-dot unseen"></span>Not visited</div></div><div class="navigator-stats"><div><strong id="stat-answered">0</strong><span>Answered</span></div><div><strong id="stat-review">0</strong><span>Review</span></div><div><strong id="stat-unanswered">15</strong><span>Remaining</span></div></div><button class="submit-button" id="submit-exam" type="button">Submit assessment <span>→</span></button><p class="submit-note">You can review your answers before final submission.</p></aside></div>
+      </section>
+
+      <section id="result-view" class="view result-view">
+        <div class="result-heading"><div class="eyebrow">ASSESSMENT COMPLETE</div><h1 id="result-title">Your result is ready.</h1><p id="result-subtitle">Review your performance and answers below.</p></div>
+        <div class="result-overview"><div class="score-panel"><span class="summary-label">YOUR SCORE</span><div class="score-value"><strong id="score-value">0</strong><span>/ 15</span></div><div class="score-track"><span id="score-fill"></span></div><span class="score-message" id="score-message">Keep practising.</span></div><div class="metric-panel"><div class="metric"><span>Percentage</span><strong id="metric-percent">0%</strong></div><div class="metric"><span>Correct</span><strong id="metric-correct">0</strong></div><div class="metric"><span>Incorrect</span><strong id="metric-wrong">0</strong></div><div class="metric"><span>Unanswered</span><strong id="metric-skipped">0</strong></div></div><div class="grade-panel"><span class="summary-label">GRADE</span><strong id="grade-value">F</strong><span id="pass-status" class="status-pill">Not passed</span><small id="time-used">Time used · 00:00</small></div></div>
+        <div class="review-heading"><div><div class="eyebrow">ANSWER REVIEW</div><h2>Question-by-question review</h2><p>Compare your responses with the correct answers.</p></div><button class="secondary-button" id="new-exam" type="button">Start another exam ↗</button></div>
+        <div class="review-list" id="review-list"></div>
+        <div class="result-footer"><span>ExamSpace · Online Examination System</span><button class="text-button" id="home-button" type="button">Back to home ↑</button></div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 Online Examination System</span><span>Built for focused assessment</span></footer>
+  </div>
+
+  <div class="modal-backdrop" id="submit-modal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close-modal type="button" aria-label="Close">×</button><div class="modal-icon">?</div><h2>Submit your assessment?</h2><p id="submit-summary">You have answered 0 of 15 questions.</p><div class="modal-actions"><button class="secondary-button" data-close-modal type="button">Continue exam</button><button class="primary-button" id="confirm-submit" type="button">Submit now →</button></div></div></div>
+  <div class="modal-backdrop" id="admin-modal" aria-hidden="true"><div class="modal-card admin-modal-card"><button class="modal-close" data-close-modal type="button" aria-label="Close">×</button><div class="eyebrow">RESTRICTED ACCESS</div><h2>Administrator sign in</h2><p>Enter the administrator PIN to view submitted assessment records.</p><form id="admin-form"><label for="admin-pin">Administrator PIN</label><input id="admin-pin" type="password" autocomplete="current-password" required><button class="primary-button full-button" type="submit">Sign in →</button><p class="form-error" id="admin-error" role="alert"></p></form></div></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body></html>
